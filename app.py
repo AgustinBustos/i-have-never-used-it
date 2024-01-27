@@ -13,9 +13,17 @@ if __name__=='__main__':
         options = uc.ChromeOptions()
 
         
-        options.add_argument(r"--user-data-dir=C:\Users\TheQwertyPhoenix\AppData\Local\Google\Chrome\User Data") #e.g. C:\Users\You\AppData\Local\Google\Chrome\User Data
+        options.add_argument("--user-data-dir=/home/agus/.config/google-chrome/") #e.g. C:\Users\You\AppData\Local\Google\Chrome\User Data
         
-        options.add_argument(r'--profile-directory=Profile 1') #e.g. Profile 3
+        options.add_argument('--profile-directory=Default') #e.g. Profile 3
+
+        # options.add_argument("--start-maximized")
+        # options.add_argument("--ignore-certificate-errors")
+        # options.add_argument('--no-sandbox')
+        # options.add_argument("--disable-extensions")
+        # # Disable webdriver flags or you will be easily detectable
+        # options.add_argument("--disable-blink-features")
+        # options.add_argument("--disable-blink-features=AutomationControlled")
         
         driver=uc.Chrome(options=options)
         # driver=uc.Chrome()
@@ -45,8 +53,10 @@ if __name__=='__main__':
 
         #voy a la busqueda de trabajo
         time.sleep(10)
-        driver.find_element(By.XPATH,'//*[@id="navbarNavDropdown"]/ul/li[4]').click()
-        time.sleep(10)
+        driver.find_element(By.XPATH,'//*[@id="navbarNavDropdown"]/ul/li[4]').click()    #//*[@id="navbarNavDropdown"]/ul/li[4]
+        time.sleep(1)  
+        
+
         driver.find_element(By.XPATH,'//*[@id="navbarNavDropdown"]/ul/li[4]/ul/li[5]/a').click()
         time.sleep(10)
 
@@ -64,13 +74,10 @@ if __name__=='__main__':
         main_list=ull.find_elements(By.CLASS_NAME,'jobOffer')
         time.sleep(dt)
         
+        
 
         for i in range(len(main_list)-1):
-            # //*[@id="ctl04_ctl00_upJobSearchList"]/div[2]/div[1]
-            #//*[@id="ctl04_ctl00_upJobSearchList"]/div[2]/div[2]
-            # senior=Select(driver.find_element_by_xpath('//*[@id="ctl03_ctl00_ctl01_ctl00_drpFilter"]'))
-            # senior.select_by_value('2')//*[@id="ctl04_ctl00_upJobSearchList"]/div[2]
-            # time.sleep(dt)
+
             ull=driver.find_element(By.XPATH,'//*[@id="ctl04_ctl00_upJobSearchList"]/div[2]')
             main_list=ull.find_elements(By.CLASS_NAME,'jobOffer')
             time.sleep(dt)
@@ -78,6 +85,7 @@ if __name__=='__main__':
             print(main_list[i+1].get_attribute("class"))
 
             company=main_list[i+1].find_element(By.TAG_NAME,'p').text
+            
             main_list[i+1].find_element(By.TAG_NAME,'a').click()
 
             time.sleep(dt)
