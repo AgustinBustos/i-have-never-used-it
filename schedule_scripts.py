@@ -21,7 +21,7 @@ def run_long_function():
 # run_long_function()
 
 schedule = Scheduler()
-schedule.cyclic(dt.timedelta(weeks=1), run_long_function) 
+schedule.cyclic(dt.timedelta(days=3), run_long_function) 
 print(schedule)
 
 
