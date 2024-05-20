@@ -1,10 +1,16 @@
 import undetected_chromedriver as uc
 from selenium import webdriver
-from config import PASS,NOCOMPANY
+# from config import PASS,NOCOMPANY
 import time
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.remote.webdriver import By
-dt=3
+
+PASS='742695gui222'
+NOCOMPANY=['Reconocida empresa líder en su rubro','molinos','madero','quantikal','summa','utdt','balanz','ceibo','fundar','tx','j.p.','balanz','MFA','mfa', 'fusion','analytics']
+PASS2='gui222222'
+
+time.sleep(100)
+dt=10
 
 if __name__=='__main__':
     #options=webdriver.ChromeOptions()
@@ -13,7 +19,7 @@ if __name__=='__main__':
         options = uc.ChromeOptions()
 
         
-        options.add_argument("--user-data-dir=/home/agus/.config/google-chrome/") #e.g. C:\Users\You\AppData\Local\Google\Chrome\User Data
+        options.add_argument(r"--user-data-dir=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data") #e.g. C:\Users\You\AppData\Local\Google\Chrome\User Data
         
         options.add_argument('--profile-directory=Default') #e.g. Profile 3
 
@@ -33,6 +39,9 @@ if __name__=='__main__':
         # driver=webdriver.Chrome(PATH)
         
         driver.get('https://gateway.utdt.edu/Login.aspx?backto=%2f')
+        # 
+        # 'https://gateway.utdt.edu/Login?backto=%2f'
+        
         #driver.get('https://www.google.com/')
 
 
