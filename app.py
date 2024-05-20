@@ -9,7 +9,7 @@ PASS='742695gui222'
 NOCOMPANY=['Reconocida empresa líder en su rubro','molinos','madero','quantikal','summa','utdt','balanz','ceibo','fundar','tx','j.p.','balanz','MFA','mfa', 'fusion','analytics']
 PASS2='gui222222'
 
-time.sleep(100)
+
 dt=10
 
 if __name__=='__main__':
@@ -150,5 +150,5 @@ if __name__=='__main__':
             time.sleep(2)
     except Exception as e:
         print(e)
-        time.sleep(100000)
+        
 
