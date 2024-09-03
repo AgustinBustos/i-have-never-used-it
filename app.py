@@ -4,9 +4,12 @@ from config import PASS,NOCOMPANY
 import time
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.remote.webdriver import By
-# import subprocess
-dt=3
+import subprocess
+from twilio.rest import Client
+from config import account_sid, auth_token, fromphone, myphone, apppasswords, receiveremail,email,text
+from smtplib import SMTP
 
+dt=6
 if __name__=='__main__':
     #options=webdriver.ChromeOptions()
     subprocess.run('minimize.cmd')
