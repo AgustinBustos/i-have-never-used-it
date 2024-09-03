@@ -10,6 +10,7 @@ from config import account_sid, auth_token, fromphone, myphone, apppasswords, re
 from smtplib import SMTP
 
 dt=6
+
 if __name__=='__main__':
     #options=webdriver.ChromeOptions()
     subprocess.run('minimize.cmd')
