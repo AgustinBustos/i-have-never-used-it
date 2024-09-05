@@ -22,7 +22,7 @@ schedule = Scheduler()
 schedule.cyclic(dt.timedelta(days=1), run_long_function) 
 print(schedule)
 
-# subprocess.run('minimize.cmd')
+subprocess.run('minimize.cmd')
 run_long_function()
 while True:
     schedule.exec_jobs()
