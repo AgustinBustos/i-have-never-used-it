@@ -1,0 +1,1 @@
+C:\Users\Administrator\Documents\i-have-never-used-it-aws\venv\Scripts\activate.bat && C:\Users\Administrator\Documents\i-have-never-used-it-aws\with_task.py
