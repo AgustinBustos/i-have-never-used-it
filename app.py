@@ -10,42 +10,32 @@ from config import account_sid, auth_token, fromphone, myphone, apppasswords, re
 from smtplib import SMTP
 
 dt=6
+a_day=86400
 
 if __name__=='__main__':
     #options=webdriver.ChromeOptions()
     subprocess.run('minimize.cmd')
     while True:
         try:
-
-            
             options = uc.ChromeOptions()
-
-            
             # options.add_argument("--user-data-dir=/home/agus/.config/google-chrome/") #e.g. C:\Users\You\AppData\Local\Google\Chrome\User Data
-            
             options.add_argument('--profile-directory=Default') #e.g. Profile 3
-
-            # options.add_argument("--start-maximized")
+            options.add_argument("--start-maximized")
             # options.add_argument("--ignore-certificate-errors")
             # options.add_argument('--no-sandbox')
             # options.add_argument("--disable-extensions")
             # # Disable webdriver flags or you will be easily detectable
             # options.add_argument("--disable-blink-features")
             # options.add_argument("--disable-blink-features=AutomationControlled")
-            
             driver=uc.Chrome(options=options)
             # driver=uc.Chrome()
             # driver=webdriver.Chrome(options=options)
             # print('here2')
             # PATH='C:\Program Files (x86)\chromedriver.exe'
             # driver=webdriver.Chrome(PATH)
-            
             driver.get('https://gateway.utdt.edu/Login.aspx?backto=%2f')
             #driver.get('https://www.google.com/')
             time.sleep(20)
-            
-
-
             #####################entro a la pagina principal
             try:
                 input_mail=driver.find_element(By.ID,'ctl02_txtEmail')
@@ -57,6 +47,7 @@ if __name__=='__main__':
                 subBut.click()
                 time.sleep(dt)
             except Exception as e:
+                print('this--')
                 print(e)
         
 
@@ -65,27 +56,18 @@ if __name__=='__main__':
             time.sleep(10)
             driver.find_element(By.XPATH,'//*[@id="navbarNavDropdown"]/ul/li[4]').click()    #//*[@id="navbarNavDropdown"]/ul/li[4]
             time.sleep(1)  
-            
-
             driver.find_element(By.XPATH,'//*[@id="navbarNavDropdown"]/ul/li[4]/ul/li[5]/a').click()
             time.sleep(10)
-
-
             # #cambio por fecha
             # fecha=Select(driver.find_element_by_xpath('//*[@id="ctl03_ctl00_ctl01_ctl00_drpOrder"]'))
             # fecha.select_by_value('1')
             # time.sleep(dt)
             # #semisenior
-            
-            
-
             #aca deberia poner una funcion iterable
             ull=driver.find_element(By.XPATH,'//*[@id="ctl04_ctl00_upJobSearchList"]/div[2]')
             main_list=ull.find_elements(By.CLASS_NAME,'jobOffer')
             time.sleep(dt)
-            
-            
-
+            #throw cvs
             for i in range(20):  #len(main_list)-1
 
                 ull=driver.find_element(By.XPATH,'//*[@id="ctl04_ctl00_upJobSearchList"]/div[2]')
@@ -141,6 +123,7 @@ if __name__=='__main__':
                         
                     except:
                         print('not applied')
+                        
                         time.sleep(dt)
                         driver.back()
                         time.sleep(dt)
@@ -148,24 +131,31 @@ if __name__=='__main__':
                         time.sleep(10)
                         driver.find_element(By.XPATH,'//*[@id="navbarNavDropdown"]/ul/li[4]/ul/li[5]/a').click()
                         time.sleep(10)
-                time.sleep(2)
-                driver.quit()
-                with SMTP('smtp.gmail.com', 587) as smtp:
-                    smtp.starttls()
-                    smtp.login(email,apppasswords)
-                    smtp.sendmail(email,receiveremail,text)
-                time.sleep(86400)
+            time.sleep(2)
+            driver.quit()
+            with SMTP('smtp.gmail.com', 587) as smtp:
+                
+                smtp.starttls()
+                smtp.login(email,apppasswords)
+                smtp.sendmail(email,receiveremail,text)
+            time.sleep(a_day)
                 
 
         except Exception as e:
+            print('this2--')
             print(e)
-            client = Client(account_sid, auth_token)
-            message = client.messages.create(
-            from_=f'whatsapp:{fromphone}',
-            body=e,
-            to=f'whatsapp:{myphone}'
-            )
-            print(message.sid)
-            time.sleep(86400)
+            # client = Client(account_sid, auth_token)
+            # message = client.messages.create(
+            # from_=f'whatsapp:{fromphone}',
+            # body=e,
+            # to=f'whatsapp:{myphone}'
+            # )
+            # print(message.sid)
+            with SMTP('smtp.gmail.com', 587) as smtp:
+                
+                smtp.starttls()
+                smtp.login(email,apppasswords)
+                smtp.sendmail(email,receiveremail,f"Subject: bot failed\n\nbrooo")
+            time.sleep(a_day)
             
 
