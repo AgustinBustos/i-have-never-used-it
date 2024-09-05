@@ -2,3 +2,4 @@ env
 config.py
 venv
 __pycache__
+scheduler_venv
