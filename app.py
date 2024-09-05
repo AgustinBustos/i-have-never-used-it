@@ -155,7 +155,7 @@ if __name__=='__main__':
                 
                 smtp.starttls()
                 smtp.login(email,apppasswords)
-                smtp.sendmail(email,receiveremail,f"Subject: bot failed\n\nbrooo")
+                smtp.sendmail(email,receiveremail,f"Subject: bot failed\n\n{e}")
             time.sleep(a_day)
             
 
