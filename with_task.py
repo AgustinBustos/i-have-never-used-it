@@ -66,7 +66,7 @@ if __name__=='__main__':
             main_list=ull.find_elements(By.CLASS_NAME,'jobOffer')
             time.sleep(dt)
             #throw cvs
-            for i in range(20):  #len(main_list)-1
+            for i in range(len(main_list)-1):  #20
 
                 ull=driver.find_element(By.XPATH,'//*[@id="ctl04_ctl00_upJobSearchList"]/div[2]')
                 main_list=ull.find_elements(By.CLASS_NAME,'jobOffer')
