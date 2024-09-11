@@ -11,6 +11,16 @@ hour_timeout=5
 def run_long_function():
     try:
         subprocess.run(r"C:\Users\Administrator\Documents\i-have-never-used-it-aws\full_run.bat",timeout=hour_timeout*60*60)
+        
+
+    except Exception as e:
+        print(e)
+        print('-------------------------------------------------------------------------------------------------------------------------')
+        print('-------------------------------------------------------------------------------------------------------------------------')
+    time.sleep(7200)
+    try:
+
+        subprocess.run(r"C:\Users\Administrator\Documents\aibot\linkedin_scrap.bat",timeout=hour_timeout*60*60)
     except Exception as e:
         print(e)
         print('-------------------------------------------------------------------------------------------------------------------------')
