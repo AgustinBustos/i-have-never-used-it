@@ -11,6 +11,7 @@ from smtplib import SMTP
 
 dt=6
 a_day=1
+# print
 
 if __name__=='__main__':
     #options=webdriver.ChromeOptions()
@@ -71,8 +72,8 @@ if __name__=='__main__':
                 ull=driver.find_element(By.XPATH,'//*[@id="ctl04_ctl00_upJobSearchList"]/div[2]')
                 main_list=ull.find_elements(By.CLASS_NAME,'jobOffer')
                 time.sleep(dt)
-                print('-------------------------------------------------------------------------------------------')
-                print(main_list[i+1].get_attribute("class"))
+                # print('-------------------------------------------------------------------------------------------')
+                # print(main_list[i+1].get_attribute("class"))
 
                 company=main_list[i+1].find_element(By.TAG_NAME,'p').text
                 
@@ -81,21 +82,21 @@ if __name__=='__main__':
                 time.sleep(dt)
                 condition=driver.find_element(By.XPATH,'//*[@id="WPForm"]/div[3]/div[1]/div[2]/div/div/div/section[1]/div/div[2]/div[2]/p').text
                 
-                print("Licenciatura en Economía" in condition)
+                # print("Licenciatura en Economía" in condition)
                 
-                print(company)
+                # print(company)
                 
 
                 companybool=False
                 for nocomp in NOCOMPANY:
                     companybool=companybool or (nocomp.lower() in company.lower())
-                print('is it previous comp?',companybool)
+                # print('is it previous comp?',companybool)
                 if ("Licenciatura en Economía" not in condition) or companybool:
                     time.sleep(dt)
                     driver.back()
                 else:
                     try:
-                        print('lets apply!')   
+                        # print('lets apply!')   
                         driver.find_element(By.XPATH,'//*[@id="WPForm"]/div[3]/div[1]/div[2]/div/div/div/section[1]/div/div[2]/div[4]/div/a').click()
                         
                         time.sleep(5)
@@ -120,7 +121,7 @@ if __name__=='__main__':
                         
                         
                     except:
-                        print('not applied')
+                        # print('not applied')
                         
                         time.sleep(dt)
                         driver.back()
