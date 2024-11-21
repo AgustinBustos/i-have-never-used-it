@@ -5,7 +5,8 @@ from scheduler import Scheduler
 
 import time
 import subprocess
-
+subprocess.Popen(r"C:\Users\Administrator\Downloads\rclone-v1.68.0-windows-amd64\rclone-v1.68.0-windows-amd64\gdrive.bat")
+time.sleep(60)
 hour_timeout=5
 
 def run_long_function():
